@@ -22,6 +22,9 @@ typedef struct info
 	int state;
 	linked_x *environment;
 	int argcount;
+	linked_x *aka;
+	int swapenv;
+	char **env1;
 
 
 
@@ -46,8 +49,8 @@ ssize_t takes_the_buffer(information_x ptrstruct, char *buf, size_t *s);
 
 //getenviron
 
-char **find_enviroment(information_x *ptrstruct);
-int setenv(information_x *ptrstruct, char *add_var, char *equal);
+char **discover_env(information_x *ptrstruct);
+int setenv(information_x *ptrstruct, char *add_variable, char *equal);
 int unsetenv(information_x *ptrstruct, char *rem_var);
 //exits
 char *find_char(char *string, char ch);

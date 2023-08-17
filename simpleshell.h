@@ -103,4 +103,12 @@ char *value_env(information_x *ptrstruct, char *identity);
 int now_environment(information_x *ptrstruct);
 int delete_environment(information_x *ptrstruct);
 int linked_environ(information_x *ptrstruct);
+/*lists1.c*/
+size_t listextent(const listextent *he);
+char **linkedstring(linked_x *hd);
+size_t outputlinked(const linked_x *hd);
+linked_x *beginnode(linked_x *our_node, char *before, char ch);
+ssize_t findnode(linked_x *hd, linked_x *our_node);
+
+int _putchar(char f);
 #endif

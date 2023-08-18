@@ -13,6 +13,20 @@
 #include <unistd.h>
 #include <sys/types.h>
 
+#define CHANGE_SMALL 1
+#define CHANGE_UNSYMBOL 2
+#define STUDY_BUFFER_LEN 1024
+#define OUTPUT_BUFFER_LEN 1024
+#define EMPTY_BUFFER -1
+#define CUSTOM_LINE 0
+#define TRUE_CHAIN
+typedef struct stringlist
+{
+	int numberA;
+	char *ptrstr;
+	struct stringlist *next;
+} linked_x;
+
 
 typedef struct info
 {
@@ -22,27 +36,29 @@ typedef struct info
 	int state;
 	linked_x *environment;
 	int argcount;
-
+	linked_x *aka;
+	int swapenv;
+	char **env1;
+	unsigned int band_length;
+	char *fileidentity;
+	char *argument;
+	int lengthhist;
+	int buf_identity;
+	int flaglength;
+	linked_x *thepast;
 
 
 
 
 } information_x;
 
-typedef struct liststring
-{
-	int numberA;
-	char *ptrstr;
-	struct liststring *next;
-} linked_x;
-
 //getline
 
 ssize_t read_process(information_x *ptrstruct);
 void signal_int(__attribute__((unused))int signalnumber);
-ssize_t chain_buffers(information_x ptrstruct, char **bufer, size_t n);
+ssize_t chain_buffers(information_x *ptrstruct, char **bufer, size_t n);
 int custom_getline(information_x *ptrstruct, char **input_ptr, size_t length);
-ssize_t takes_the_buffer(information_x ptrstruct, char *buf, size_t *s);
+ssize_t takes_the_buffer(information_x *ptrstruct, char *buf, size_t *s);
 /* string.c*/
 int length_string(char *sl);
 int comparison(char *sl1, char *sl2);
@@ -51,13 +67,13 @@ char *concatenation(char *destination, char *source);
 
 //getenviron
 
-char **find_enviroment(information_x *ptrstruct);
-int setenv(information_x *ptrstruct, char *add_var, char *equal);
-int unsetenv(information_x *ptrstruct, char *rem_var);
+char **discover_env(information_x *ptrstruct);
+int setenv_(information_x *ptrstruct, char *add_variable, char *equal);
+int unsetenv_(information_x *ptrstruct, char *rem_var);
 //exits
 char *find_char(char *string, char ch);
 char *strncat_(char *dest, char *src, int x);
-char *strcpy_(char *dest, char *src, int x);
+char *stringcopy_(char *dest, char *src, int x);
 
 //get info
 
@@ -87,7 +103,7 @@ void string_input(char *string);
 int write_str_fd(char *string, int FD);
 int write_fd(char ch, int FD);
 //errors1.c
-void output_error(information_x ptrstruct, char *stringerror);
+void output_error(information_x *ptrstruct, char *stringerror);
 int str_to_int(char *str);
 int output_d(int value, int FD);
 char *change_num(long int digit, int foundation, int flagz);
@@ -104,7 +120,7 @@ int now_environment(information_x *ptrstruct);
 int delete_environment(information_x *ptrstruct);
 int linked_environ(information_x *ptrstruct);
 /*lists1.c*/
-size_t listextent(const listextent *he);
+size_t listextent(const linked_x *he);
 char **linkedstring(linked_x *hd);
 size_t outputlinked(const linked_x *hd);
 linked_x *beginnode(linked_x *our_node, char *before, char ch);

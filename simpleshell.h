@@ -109,6 +109,12 @@ char **linkedstring(linked_x *hd);
 size_t outputlinked(const linked_x *hd);
 linked_x *beginnode(linked_x *our_node, char *before, char ch);
 ssize_t findnode(linked_x *hd, linked_x *our_node);
+/*list.c*/
+linked_x *addupnode(linked_x **hd, const char *strn, int numA);
+linked_x *finalisenode(linked_x **hd, const char *string, int numB);
+size_t outputlinkedstr(const linked_x *k);
+int eliminatenode(linked_x **hd, unsigned int index1);
+void escapelist(linked_x **hdptr);
 
 int _putchar(char f);
 #endif

@@ -133,4 +133,14 @@ int eliminatenode(linked_x **hd, unsigned int index1);
 void escapelist(linked_x **hdptr);
 
 int _putchar(char f);
+/*memory.c*/
+int escapepointer(void **ptrA);
+/*parser.c*/
+int execcmd(information_x *ptrstruct, char *way);
+char *copychars(char *waystring, int begin, int end);
+char *locateway(information_x *ptrstruct, char *waystr, char *comand);
+/* realloc.c*/
+char *fillmemory(char *sm, char bsm, unsigned int q);
+void escape(char **pstr);
+void *memorychanger(void *omb, unsigned int os, unsigned int ns);
 #endif

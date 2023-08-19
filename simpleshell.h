@@ -19,7 +19,9 @@
 #define OUTPUT_BUFFER_LEN 1024
 #define EMPTY_BUFFER -1
 #define CUSTOM_LINE 0
-#define TRUE_CHAIN
+#define TRUE_CHAIN 0
+#define OLD_F "the history of shell"
+#define FINAL_HIST 4096
 typedef struct stringlist
 {
 	int numberA;
@@ -46,6 +48,9 @@ typedef struct info
 	int buf_identity;
 	int flaglength;
 	linked_x *thepast;
+	char *way;
+	char **prompt_buffer;
+
 
 
 
@@ -56,8 +61,8 @@ typedef struct info
 
 ssize_t read_process(information_x *ptrstruct);
 void signal_int(__attribute__((unused))int signalnumber);
-ssize_t chain_buffers(information_x *ptrstruct, char **bufer, size_t n);
-int custom_getline(information_x *ptrstruct, char **input_ptr, size_t length);
+ssize_t chain_buffers(information_x *ptrstruct, char **bufer, size_t *n);
+int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length);
 ssize_t takes_the_buffer(information_x *ptrstruct, char *buf, size_t *s);
 /* string.c*/
 int length_string(char *sl);
@@ -109,7 +114,7 @@ int output_d(int value, int FD);
 char *change_num(long int digit, int foundation, int flagz);
 void eliminate_comments(char *bufA);
 //HISTORY
-int linked_hist(information_x ptrstruct, char *bufferA, int counter);
+int linked_hist(information_x *ptrstruct, char *bufferA, int counter);
 int output_hist(information_x *ptrstruct);
 char *wayback_file(information_x *ptrstruct);
 int study_hist(information_x *ptrstruct);

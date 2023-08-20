@@ -149,8 +149,8 @@ char *fillmemory(char *sm, char bsm, unsigned int q);
 void escape(char **pstr);
 void *memorychanger(void *omb, unsigned int os, unsigned int ns);
 /*shell_loop*/
-int big_loop(ptrstruct *ptrstruct, char **vector);
+int big_loop(information_x *ptrstruct, char **vector);
 int locatemadeup(information_x *ptrstruct);
-void locatecomand(info_t *info);
+void locatecomand(information_x *ptrstruct);
 void newcomand(information_x *ptrstruct);
 #endif

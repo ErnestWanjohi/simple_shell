@@ -153,4 +153,9 @@ int big_loop(ptrstruct *ptrstruct, char **vector);
 int locatemadeup(information_x *ptrstruct);
 void locatecomand(info_t *info);
 void newcomand(information_x *ptrstruct);
+/*string1.c*/
+char *stringduplicate(char *station, char *source);
+char *string_duplicator(const char *string);
+void _puts(char *stringA);
+int _putchar(char ch);
 #endif

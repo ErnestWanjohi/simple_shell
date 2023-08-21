@@ -164,4 +164,10 @@ int _putchar(char ch);
 /*tokenizer.c*/
 char **stringsplitter(char *string, char *dlm);
 char **stringtoword(char *string, char w);
+/*vars.c*/
+int chaincharchecker(information_x *ptrstruct, char *buffn, size_t *address);
+void bond_checker(information_x *ptrstruct, char *buffz, size_t *address, size_t z, size_t extent);
+int changefake(information_x *ptrstruct);
+int variablechanger(information_x *ptrstruct);
+int stringchanger(char **oaddress, char *naddress);
 #endif

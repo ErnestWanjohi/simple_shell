@@ -158,4 +158,7 @@ char *stringduplicate(char *station, char *source);
 char *string_duplicator(const char *string);
 void _puts(char *stringA);
 int _putchar(char ch);
+/*tokenizer.c*/
+char **stringsplitter(char *string, char *dlm);
+char **stringtoword(char *string, char w);
 #endif

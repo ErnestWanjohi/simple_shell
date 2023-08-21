@@ -20,6 +20,9 @@
 #define EMPTY_BUFFER -1
 #define CUSTOM_LINE 0
 #define TRUE_CHAIN 0
+#define COMAND_TWO 1
+#define COMAND_BOTH 2
+#define COMAND_BOND 3
 #define OLD_F "the history of shell"
 #define FINAL_HIST 4096
 typedef struct stringlist

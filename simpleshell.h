@@ -28,7 +28,12 @@ typedef struct stringlist
 	char *ptrstr;
 	struct stringlist *next;
 } linked_x;
-
+typedef struct madeup
+{
+	char *variety;
+	int *fptr; 
+	int information_x;
+} madeup_x;
 
 typedef struct info
 {

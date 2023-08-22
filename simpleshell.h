@@ -140,7 +140,6 @@ size_t outputlinkedstr(const linked_x *k);
 int eliminatenode(linked_x **hd, unsigned int index1);
 void escapelist(linked_x **hdptr);
 
-int _putchar(char f);
 /*memory.c*/
 int escapepointer(void **ptrA);
 /*parser.c*/

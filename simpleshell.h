@@ -25,6 +25,7 @@
 #define COMAND_BOND 3
 #define OLD_F "the history of shell"
 #define FINAL_HIST 4096
+extern char **environ;
 typedef struct stringlist
 {
 	int numberA;

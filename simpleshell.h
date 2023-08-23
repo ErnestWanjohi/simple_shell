@@ -61,30 +61,31 @@ typedef struct stringlist
  */
 typedef struct info
 {
-	int outputfd;
-	int wrong_number;
-	char **argvector;
-	int state;
-	linked_x *environment;
-	int argcount;
-	linked_x *aka;
-	int swapenv;
-	char **env1;
-	unsigned int band_length;
-	char *fileidentity;
 	char *argument;
-	int lengthhist;
-	int buf_identity;
-	int flaglength;
-	linked_x *thepast;
+	char **argvector;
 	char *way;
+	int argcount;
+	unsigned int band_length;
+	int wrong_number;
+	int flaglength;
+	char *fileidentity;
+	linked_x *environment;
+	linked_x *thepast;
+	linked_x *aka;
+	char **env1;
+	int swapenv;
+	int state;
 	char **prompt_buffer;
-
-
-
-
+	int buf_identity;
+	int outputfd;
+	int lengthhist;
 
 } information_x;
+
+
+#define CONFIG_STRUCT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+		0, 0, 0}
 
 /**
  * struct madeup - a made up struct
@@ -157,13 +158,13 @@ char *value_env(information_x *ptrstruct, char *identity);
 int now_environment(information_x *ptrstruct);
 int delete_environment(information_x *ptrstruct);
 int linked_environ(information_x *ptrstruct);
-/*lists1.c*/
+
 size_t listextent(const linked_x *he);
 char **linkedstring(linked_x *hd);
 size_t outputlinked(const linked_x *hd);
 linked_x *beginnode(linked_x *our_node, char *before, char ch);
 ssize_t findnode(linked_x *hd, linked_x *our_node);
-/*list.c*/
+
 linked_x *addupnode(linked_x **hd, const char *strn, int numA);
 linked_x *finalisenode(linked_x **hd, const char *string, int numB);
 size_t outputlinkedstr(const linked_x *k);
@@ -172,28 +173,28 @@ void escapelist(linked_x **hdptr);
 
 
 int escapepointer(void **ptrA);
-/*parser.c*/
+
 int execcmd(information_x *ptrstruct, char *way);
 char *copychars(char *waystring, int begin, int end);
 char *locateway(information_x *ptrstruct, char *waystr, char *comand);
-/* realloc.c*/
+
 char *fillmemory(char *sm, char bsm, unsigned int q);
 void escape(char **pstr);
 void *memorychanger(void *omb, unsigned int os, unsigned int ns);
-/*shell_loop*/
+
 int big_loop(information_x *ptrstruct, char **vector);
 int locatemadeup(information_x *ptrstruct);
 void locatecomand(information_x *ptrstruct);
 void newcomand(information_x *ptrstruct);
-/*string1.c*/
+
 char *stringduplicate(char *station, char *source);
 char *string_duplicator(const char *string);
 void _puts(char *stringA);
 int _putchar(char ch);
-/*tokenizer.c*/
+
 char **stringsplitter(char *string, char *dlm);
 char **stringtoword(char *string, char w);
-/*vars.c*/
+
 int chaincharchecker(information_x *ptrstruct, char *buffn, size_t *address);
 void bond_checker(information_x *ptrstruct, char *buffz,
 		size_t *address, size_t z, size_t extent);

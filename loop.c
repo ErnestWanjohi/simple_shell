@@ -53,7 +53,7 @@ int locatemadeup(information_x *ptrstruct)
 {
 	int q, madeup = -1;
 	madeup_x madeint[] = {
-		{"gw", get_way},
+		{"gw", gate_way},
 		{"now", now_environment},
 		{"ncd", now_cd},
 		{"past", way_back},

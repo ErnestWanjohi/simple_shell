@@ -26,13 +26,39 @@
 #define OLD_F "the history of shell"
 #define FINAL_HIST 4096
 extern char **environ;
+/**
+ * struct stringlist - this is a linked list
+ * @numberA: NUMA
+ * @ptrstr: pointer
+ * @next: shows next
+ */
 typedef struct stringlist
 {
 	int numberA;
 	char *ptrstr;
 	struct stringlist *next;
 } linked_x;
-
+/**
+ * struct info - struct info
+ * @outputfd: output*
+ * @wrong_number: bad number
+ * @argvector: vector
+ * @state: situation
+ * @environment: statee
+ * @argcount: count
+ * @aka: also as
+ * @swapenv: change env
+ * @env1: evv1
+ * @band_length: sizelength
+ * @fileidentity:file ident
+ * @argument:agumentxzz
+ * @lengthhist: length
+ * @buf_identity: identity
+ * @flaglength: flagx
+ * @thepast: long ago
+ * @way: wayyz
+ * @prompt_buffer: buffer
+ */
 typedef struct info
 {
 	int outputfd;
@@ -60,7 +86,11 @@ typedef struct info
 
 } information_x;
 
-
+/**
+ * struct madeup - a made up struct
+ *@variety: many
+ *@fptr: pointer
+ */
 typedef struct madeup
 {
 	char *variety;
@@ -165,7 +195,8 @@ char **stringsplitter(char *string, char *dlm);
 char **stringtoword(char *string, char w);
 /*vars.c*/
 int chaincharchecker(information_x *ptrstruct, char *buffn, size_t *address);
-void bond_checker(information_x *ptrstruct, char *buffz, size_t *address, size_t z, size_t extent);
+void bond_checker(information_x *ptrstruct, char *buffz,
+		size_t *address, size_t z, size_t extent);
 int changefake(information_x *ptrstruct);
 int variablechanger(information_x *ptrstruct);
 int stringchanger(char **oaddress, char *naddress);

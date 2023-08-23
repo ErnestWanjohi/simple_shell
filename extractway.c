@@ -31,46 +31,41 @@ ssize_t takes_the_buffer(information_x  *ptrstruct, char *buf, size_t *s)
  */
 int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
 {
-	ssize_t x = 0, q = 0, w;
-	char *pointer = NULL;
-	char *buffer_new = NULL, *v;
-	static char BUFFER[STUDY_BUFFER_LEN];
-	static size_t m, lennn;
+	size_t b;
+	static char bufA[STUDY_BUFFER_LEN];
+	static size_t z, width;
+	ssize_t x = 0, t = 0;
+	char *ptrr = NULL, *nowz = NULL, *vv;
 
-	pointer = *input_ptr;
-	if (pointer && length)
-	{
-		q = *length;
-	}
-	if (m == lennn)
-	{
-		m = lennn = 0;
-	}
-	x = takes_the_buffer(ptrstruct, BUFFER, &lennn);
-	if (x == -1 || (x == 0 && lennn == 0))
-	{
+	ptrr = *input_ptr;
+	if (ptrr && length)
+		t = *length;
+	if (z == width)
+		z = width = 0;
+	/*whats the buffer*/
+	x = takes_the_buffer(ptrstruct, bufA, &width);
+	if (x == -1 || (x == 0 && width == 0))
 		return (-1);
-	}
-	v = find_char(BUFFER + m, '\n'); /*whare is the new line*/
-	w = v ? 1 + (unsigned int)(v - BUFFER) : lennn;
-	buffer_new = memorychanger(pointer, q, q ? q + w : w + 1);
-	if (!buffer_new)
-	{
-		return (pointer ? free(pointer), -1 : -1);
-	}
-	if (q)
-		strncat_(buffer_new, BUFFER + 1, w - m);
+	/*takes the buffer*/
+	vv = find_char(bufA + z, '\n');
+	b = vv ? 1 + (unsigned int)(vv - bufA) : width;
+	nowz = memorychanger(ptrr, t, t ? t + b : b + 1);
+	if (!nowz)
+		return (ptrr ? free(ptrr), -1 : -1);
+
+	if (t)
+		strncat_(nowz, bufA + z, b - z);
 	else
-		stringncopy_(buffer_new, BUFFER + 1, w - m + 1);
-	q += w - m;
-	m = w;
-	pointer = buffer_new;
+		stringncopy_(nowz, bufA + z, b - z + 1);
+
+	t += b - z;
+	z = b;
+	ptrr = nowz;
+
 	if (length)
-	{
-		*length = q;
-		*input_ptr = pointer;
-	}
-		return (q);
+		*length = t;
+	*input_ptr = ptrr;
+	return (t);
 }
 /**
  * chain_buffers - handles chained buffers
@@ -86,8 +81,8 @@ ssize_t chain_buffers(information_x  *ptrstruct, char **bufer, size_t *n)
 
 	if (!*n)
 	{
-		free(bufer);
-		bufer = NULL;
+		free(*bufer);
+		*bufer = NULL;
 		signal(SIGINT, signal_int);
 
 		#if CUSTOM_LINE

@@ -31,7 +31,7 @@ ssize_t takes_the_buffer(information_x  *ptrstruct, char *buf, size_t *s)
  */
 int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
 {
-	size_t x = 0, q = 0, w;
+	ssize_t x = 0, q = 0, w;
 	char *pointer = NULL;
 	char *buffer_new = NULL, *v;
 	static char BUFFER[STUDY_BUFFER_LEN];
@@ -44,10 +44,10 @@ int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
 	}
 	if (m == lennn)
 	{
-		m == lennn == 0;
+		m = lennn = 0;
 	}
 	x = takes_the_buffer(ptrstruct, BUFFER, &lennn);
-	if (x == -1 || x == 0 && lennn == 0)
+	if (x == -1 ||(x == 0 && lennn == 0))
 	{
 		return (-1);
 	}
@@ -81,7 +81,7 @@ int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
  */
 ssize_t chain_buffers(information_x  *ptrstruct, char **bufer, size_t *n)
 {
-	ssize_t lenxx = 0;
+	size_t lenxx = 0;
 	ssize_t x = 0;
 
 	if (!*n)
@@ -93,7 +93,7 @@ ssize_t chain_buffers(information_x  *ptrstruct, char **bufer, size_t *n)
 		#if CUSTOM_LINE
 			x = get_line(bufer, &lenxx, stdin);
 		#else
-			x = custom_getline(ptrstruct, bufer, n);
+			x = custom_getline(ptrstruct, bufer, &lenxx);
 		#endif
 
 		if (x > 0)
@@ -112,8 +112,8 @@ ssize_t chain_buffers(information_x  *ptrstruct, char **bufer, size_t *n)
 			*n = x;
 			ptrstruct->prompt_buffer = bufer;
 		}
-		return (x);
 	}
+	return (x);
 }
 /**
  * signal_int - supposed to handle ctrl + c
@@ -133,7 +133,7 @@ void signal_int(__attribute__((unused))int signalnumber)
  */
 ssize_t read_process(information_x *ptrstruct)
 {
-	size_t d = 0;
+	ssize_t d = 0;
 	static size_t x, lennx;
 	static size_t y;
 	static char *bufferA; /*chained buffer*/

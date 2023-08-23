@@ -114,7 +114,7 @@ int eliminatenode(linked_x **hd, unsigned int index1)
 		return (1);
 	}
 	our_node = *hd;
-	for (int k = 0; our_node;
+	for (k = 0; our_node;
 			k++, nodebefore = our_node, our_node = our_node->next)
 	{
 		if (k == index1)

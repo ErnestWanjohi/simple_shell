@@ -85,7 +85,7 @@ char *wayback_file(information_x *ptrstruct)
 	{
 		return (NULL);
 	}
-	bufferA[0] == 0;
+	bufferA[0] = 0;
 	strcpy(bufferA, add);
 	concatenation(bufferA, "/");
 	concatenation(bufferA, OLD_F);

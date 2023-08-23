@@ -21,8 +21,8 @@ int alias_output(linked_x *our_node)
 			_puts("\n");
 			x++;
 		}
-		return (0);
 	}
+		return (0);
 }
 
 /**
@@ -106,7 +106,7 @@ int give_alias(information_x *ptrstruct, char *string)
 int remove_alias(information_x *ptrstruct, char *str)
 {
 	char ch;
-	char *s, *k;
+	char *k;
 	int value;
 
 	k = find_char(str, '=');
@@ -115,13 +115,13 @@ int remove_alias(information_x *ptrstruct, char *str)
 	{
 		return (1);
 	}
-	ch = *s;
-	*s = 0;
+	ch = *k;
+	*k = 0;
 
 	value = eliminatenode(&(ptrstruct->aka),
 			findnode(ptrstruct->aka, beginnode(ptrstruct->aka,
 			str, -1)));
-	*s = ch;
+	*k = ch;
 
 	return (value);
 }

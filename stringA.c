@@ -12,7 +12,7 @@ char *stringduplicate(char *station, char *source)
 
 	if (station == source || source == 0)
 		return (station);
-	for (int g = 0; source[g]; g++)
+	for (g = 0; source[g]; g++)
 	{
 		station[g] = source[g];
 	}

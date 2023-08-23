@@ -12,24 +12,24 @@ int big_loop(information_x *ptrstruct, char **vector)
 
 	while (q != -1 && madeup != -2)
 	{
-		clear_ptrstruct(ptrstruct);
+		start_information(ptrstruct);
 		if (joining(ptrstruct))
 			_puts("$ ");
 		_putchar(EMPTY_BUFFER);
-		q = get_input(ptrstruct);
+		q = read_process(ptrstruct);
 		if (q != -1)
 		{
-			set_ptrstruct(ptrstruct, vector);
-			madeup = find_builtin(ptrstruct);
+			begin_struct(ptrstruct, vector);
+			madeup = locatemadeup(ptrstruct);
 			if (madeup == -1)
 				locatecomand(ptrstruct);
 		}
 		else if (joining(ptrstruct))
 			_putchar('\n');
-		free_info(ptrstruct, 0);
+		release_info(ptrstruct, 0);
 	}
 	output_hist(ptrstruct);
-	free_info(ptrstruct, 1);
+	release_info(ptrstruct, 1);
 	if (!joining(ptrstruct) && ptrstruct->state)
 		exit(ptrstruct->state);
 	if (madeup == -2)
@@ -108,9 +108,11 @@ void locatecomand(information_x *ptrstruct)
 		if ((joining(ptrstruct) || value_env(ptrstruct, "PATH=")
 				|| ptrstruct->argvector[0][0] == '/') && execcmd(ptrstruct,
 			ptrstruct->argvector[0]))
-		locatecomand(ptrstruct);
+		{
+			locatecomand(ptrstruct);
+		}
 
-		else if (*(ptrstruct->argument) != '\n');
+		else if (*(ptrstruct->argument) != '\n')
 		{
 			ptrstruct->state = 127;
 		output_error(ptrstruct, "not located\n");
@@ -139,7 +141,7 @@ void newcomand(information_x *ptrstruct)
 		if (execve(ptrstruct->way, ptrstruct->argvector,
 					discover_env(ptrstruct)) == -1)
 		{
-			free_info(ptrstruct, 1);
+			release_info(ptrstruct, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);

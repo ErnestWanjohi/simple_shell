@@ -50,8 +50,8 @@ int change_directory(information_x *ptrstruct)
 			setenv_(ptrstruct, "OLDPWD", value_env(ptrstruct, "PWD="));
 			setenv_(ptrstruct, "PWD", getcwd(buffer, 1024));
 		}
-		return (0);
 	}
+		return (0);
 }
 /**
  * gate_way - it exits the bash

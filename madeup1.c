@@ -21,8 +21,8 @@ int alias_output(linked_x *our_node)
 			_puts("\n");
 			x++;
 		}
-		return (0);
 	}
+		return (0);
 }
 
 /**

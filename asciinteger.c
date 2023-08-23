@@ -69,7 +69,7 @@ int ascii_integer(char *string)
 		}
 		else if (lagz == 1)
 		{
-			lagz == 2;
+			lagz = 2;
 		}
 		x++;
 	}

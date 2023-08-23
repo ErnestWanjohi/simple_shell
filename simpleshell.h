@@ -31,12 +31,6 @@ typedef struct stringlist
 	char *ptrstr;
 	struct stringlist *next;
 } linked_x;
-typedef struct madeup
-{
-	char *variety;
-	int *fptr; 
-	int information_x;
-} madeup_x;
 
 typedef struct info
 {
@@ -64,6 +58,15 @@ typedef struct info
 
 
 } information_x;
+
+
+typedef struct madeup
+{
+	char *variety;
+	/*int *fptr;*/
+	/*int information_x;*/
+	int (*fptr)(information_x *);
+} madeup_x;
 
 ssize_t read_process(information_x *ptrstruct);
 void signal_int(__attribute__((unused))int signalnumber);

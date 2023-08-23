@@ -53,7 +53,7 @@ int locatemadeup(information_x *ptrstruct)
 {
 	int q, madeup = -1;
 	madeup_x madeint[] = {
-		{"gw", get_way},
+		{"gw", gate_way},
 		{"now", now_environment},
 		{"ncd", now_cd},
 		{"past", way_back},
@@ -108,9 +108,11 @@ void locatecomand(information_x *ptrstruct)
 		if ((joining(ptrstruct) || value_env(ptrstruct, "PATH=")
 				|| ptrstruct->argvector[0][0] == '/') && execcmd(ptrstruct,
 			ptrstruct->argvector[0]))
-		locatecomand(ptrstruct);
+		{
+			locatecomand(ptrstruct);
+		}
 
-		else if (*(ptrstruct->argument) != '\n');
+		else if (*(ptrstruct->argument) != '\n')
 		{
 			ptrstruct->state = 127;
 		output_error(ptrstruct, "not located\n");

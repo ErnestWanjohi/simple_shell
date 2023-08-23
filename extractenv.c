@@ -2,7 +2,7 @@
 
 
 /**
- * unsetenv - func to remove an enviromntal variable
+ * unsetenv_ - func to remove an enviromntal variable
  * @ptrstruct: pointer to our structure
  * @rem_var: ptr t str to be removed
  * Return: 0 success
@@ -33,7 +33,7 @@ int unsetenv_(information_x *ptrstruct, char *rem_var)
 	return (ptrstruct->swapenv);
 }
 /**
- * setenv - adds new variable or configures a newi one
+ * setenv_ - adds new variable or configures a newi one
  * @ptrstruct: ptr to our structure
  * @add_variable: pointer to string we wanna add to our environ list
  * @equal: the value = in this case

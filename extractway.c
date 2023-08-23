@@ -47,7 +47,7 @@ int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
 		m = lennn = 0;
 	}
 	x = takes_the_buffer(ptrstruct, BUFFER, &lennn);
-	if (x == -1 ||(x == 0 && lennn == 0))
+	if (x == -1 || (x == 0 && lennn == 0))
 	{
 		return (-1);
 	}
@@ -61,7 +61,7 @@ int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
 	if (q)
 		strncat_(buffer_new, BUFFER + 1, w - m);
 	else
-		stringcopy_(buffer_new, BUFFER + 1, w - m + 1);
+		stringncopy_(buffer_new, BUFFER + 1, w - m + 1);
 	q += w - m;
 	m = w;
 	pointer = buffer_new;

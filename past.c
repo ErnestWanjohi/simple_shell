@@ -4,7 +4,7 @@
  * @ptrstruct: ptr to struct
  * @bufferA: buffer
  * @counter: counter
- * Return (0);
+ * Return: (0);
  */
 int linked_hist(information_x *ptrstruct, char *bufferA, int counter)
 {
@@ -98,44 +98,30 @@ char *wayback_file(information_x *ptrstruct)
  */
 int study_hist(information_x *ptrstruct)
 {
-	char *bufferA = NULL;
-	char *our_file = wayback_file(ptrstruct);
+	char *our_file = wayback_file(ptrstruct), *bufferA = NULL;
 	int end = 0, counter = 0, x;
 	struct stat wq;
 	ssize_t q, fd, lenf = 0;
 
 	if (!our_file)
-	{
 		return (0);
-	}
 	fd = open(our_file, O_RDONLY);
 	free(our_file);
 	if (fd == -1)
-	{
 		return (0);
-	}
 	if (!fstat(fd, &wq))
-	{
 		lenf = wq.st_size;
-	}
 	if (lenf < 2)
-	{
 		return (0);
-	}
 	bufferA = malloc(sizeof(char) * (lenf + 1));
 	if (!bufferA)
-	{
 		return (0);
-	}
 	q = read(fd, bufferA, lenf);
 	bufferA[lenf] = 0;
 	if (q <= 0)
-	{
 		return (free(bufferA), 0);
-	}
 	close(fd);
-	x = 0;
-	while (x < lenf)
+	for (x = 0; x < lenf; x++)
 	{
 		if (bufferA[x] == '\n')
 		{
@@ -143,18 +129,13 @@ int study_hist(information_x *ptrstruct)
 			linked_hist(ptrstruct, bufferA + end, counter++);
 			end = x + 1;
 		}
-		x++;
 	}
 	if (end != x)
-	{
 		linked_hist(ptrstruct, bufferA + end, counter++);
-	}
 	free(bufferA);
 	ptrstruct->lengthhist = counter;
 	while (ptrstruct->lengthhist-- >= FINAL_HIST)
-	{
 		eliminatenode(&(ptrstruct->thepast), 0);
-	}
 	new_num(ptrstruct);
 	return (ptrstruct->lengthhist);
 }

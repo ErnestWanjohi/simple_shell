@@ -74,7 +74,6 @@ void signal_int(__attribute__((unused))int signalnumber);
 ssize_t chain_buffers(information_x *ptrstruct, char **bufer, size_t *n);
 int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length);
 ssize_t takes_the_buffer(information_x *ptrstruct, char *buf, size_t *s);
-/* string.c*/
 int length_string(char *sl);
 int comparison(char *sl1, char *sl2);
 char *begin(const char *hay_stack, const char *nidle);
@@ -86,7 +85,7 @@ int unsetenv_(information_x *ptrstruct, char *rem_var);
 
 char *find_char(char *string, char ch);
 char *strncat_(char *dest, char *src, int x);
-char *stringcopy_(char *dest, char *src, int x);
+char *stringncopy_(char *dest, char *src, int x);
 
 
 void release_info(information_x *ptrstruct, int whole);

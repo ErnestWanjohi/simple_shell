@@ -11,20 +11,14 @@ int change_directory(information_x *ptrstruct)
 
 	x = getcwd(buffer, 1024);
 	if (!x)
-	{
 		_puts("invalid\n");
-	}
 	if (!ptrstruct->argvector[1])
 	{
 		page = value_env(ptrstruct, "HOME=");
 		if (!page)
-		{
 			chdir((page = value_env(ptrstruct, "PWD=") ? page : "/"));
-		}
 		else
-		{
 			value = chdir(page);
-		}
 	}
 	else if (strcmp(ptrstruct->argvector[1], "-") == 0)
 	{

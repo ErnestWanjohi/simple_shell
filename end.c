@@ -48,7 +48,7 @@ char *strncat_(char *dest, char *src, int x)
  * @dest: dest fileeex
  * @src: source
  * @x:  chars
- * Return: dest tination 
+ * Return: dest tination
  */
 char *stringncopy_(char *dest, char *src, int x)
 {

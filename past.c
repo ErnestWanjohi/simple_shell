@@ -98,13 +98,15 @@ char *wayback_file(information_x *ptrstruct)
  */
 int study_hist(information_x *ptrstruct)
 {
-	char *our_file = wayback_file(ptrstruct), *bufferA = NULL;
-	int end = 0, counter = 0, x;
+	char *bufferA = NULL, *our_file = wayback_file(ptrstruct);
+	int x;
+	int end = 0, counter = 0;
+	ssize_t fd, q, lenf = 0;
 	struct stat wq;
-	ssize_t q, fd, lenf = 0;
 
 	if (!our_file)
 		return (0);
+
 	fd = open(our_file, O_RDONLY);
 	free(our_file);
 	if (fd == -1)
@@ -122,14 +124,12 @@ int study_hist(information_x *ptrstruct)
 		return (free(bufferA), 0);
 	close(fd);
 	for (x = 0; x < lenf; x++)
-	{
 		if (bufferA[x] == '\n')
 		{
 			bufferA[x] = 0;
 			linked_hist(ptrstruct, bufferA + end, counter++);
 			end = x + 1;
 		}
-	}
 	if (end != x)
 		linked_hist(ptrstruct, bufferA + end, counter++);
 	free(bufferA);

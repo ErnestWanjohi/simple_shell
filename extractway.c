@@ -74,7 +74,7 @@ int custom_getline(information_x *ptrstruct, char **input_ptr, size_t *length)
  * @n:length
  * Return: size read
  */
-ssize_t chain_buffers(information_x  *ptrstruct, char **bufer, size_t *n)
+ssize_t chain_buffers(information_x *ptrstruct, char **bufer, size_t *n)
 {
 	size_t lenxx = 0;
 	ssize_t x = 0;
@@ -84,28 +84,26 @@ ssize_t chain_buffers(information_x  *ptrstruct, char **bufer, size_t *n)
 		free(*bufer);
 		*bufer = NULL;
 		signal(SIGINT, signal_int);
-
-		#if CUSTOM_LINE
-			x = get_line(bufer, &lenxx, stdin);
-		#else
-			x = custom_getline(ptrstruct, bufer, &lenxx);
-		#endif
-
+	#if CUSTOM_LINE
+		x = get_line(bufer, &lenxx, stdin);
+	#else
+		x = custom_getline(ptrstruct, bufer, &lenxx);
+	#endif
 		if (x > 0)
 		{
 			if ((*bufer)[x - 1] == '\n')
 			{
-				(*bufer)[x - 1] = '\n';
+				(*bufer)[x - 1] = '\0';
 				x--;
 			}
-		}
-		ptrstruct->flaglength = 1;
-		eliminate_comments(*bufer);
-		linked_hist(ptrstruct, *bufer, ptrstruct->lengthhist);
-		if (find_char(*bufer, ';'))
-		{
-			*n = x;
-			ptrstruct->prompt_buffer = bufer;
+			ptrstruct->flaglength = 1;
+			eliminate_comments(*bufer);
+			linked_hist(ptrstruct, *bufer, ptrstruct->lengthhist++);
+
+			{
+				*n = x;
+				ptrstruct->prompt_buffer = bufer;
+			}
 		}
 	}
 	return (x);

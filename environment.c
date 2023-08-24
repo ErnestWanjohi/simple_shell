@@ -86,13 +86,8 @@ int linked_environ(information_x *ptrstruct)
 	size_t x;
 	linked_x *our_node = NULL;
 
-	 x = 0;
-	while (environ[x])
-	{
+	for (x = 0; environ[x]; x++)
 		finalisenode(&our_node, environ[x], 0);
-		x++;
-	}
 	ptrstruct->environment = our_node;
-
 	return (0);
 }

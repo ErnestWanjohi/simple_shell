@@ -114,9 +114,8 @@ ssize_t chain_buffers(information_x *ptrstruct, char **bufer, size_t *n)
  */
 void signal_int(__attribute__((unused))int signalnumber)
 {
-	_putchar('\n');
-	_putchar('$');
-	_putchar(' ');
+	_puts("\n");
+	_puts("$");
 	_putchar(EMPTY_BUFFER);
 }
 /**

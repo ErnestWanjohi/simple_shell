@@ -21,7 +21,7 @@ int main(int counter, char **vector)
 		if (x == -1)
 		{
 			if (errno == EACCES)
-				exit(98);
+				exit(126);
 			if (errno == ENOENT)
 			{
 				string_input(vector[0]);
@@ -29,7 +29,7 @@ int main(int counter, char **vector)
 				string_input(vector[1]);
 				putchar_error('\n');
 				putchar_error(EMPTY_BUFFER);
-				exit(99);
+				exit(127);
 			}
 			return (EXIT_FAILURE);
 		}

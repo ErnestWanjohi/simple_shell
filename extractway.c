@@ -126,41 +126,39 @@ void signal_int(__attribute__((unused))int signalnumber)
  */
 ssize_t read_process(information_x *ptrstruct)
 {
-	ssize_t d = 0;
-	static size_t x, lennx;
+	ssize_t x = 0;
+	static char *bufferA;
+	char **ptrbuf = &(ptrstruct->argument), *q;
+	static size_t d, lennx;
 	static size_t y;
-	static char *bufferA; /*chained buffer*/
-	char **ptrbuf = &(ptrstruct->argument);
-	char *q;
 
 	_putchar(EMPTY_BUFFER);
-	d = chain_buffers(ptrstruct, &bufferA, &lennx);  /*read input manage buf*/
-	if (d == -1)
-	{
-		return (-1);  /*eof*/
-	}
+	x = chain_buffers(ptrstruct, &bufferA, &lennx);
+	if (x == -1)
+		return (-1);
 	if (lennx)
 	{
-		y = x;
-		q = bufferA + x;
-		bond_checker(ptrstruct, bufferA, &y, x, lennx);
+		y = d;
+		q = bufferA + d;
+		bond_checker(ptrstruct, bufferA, &y, d, lennx);
 		while (y < lennx)
 		{
 			if (chaincharchecker(ptrstruct, bufferA, &y))
-			{
 				break;
-				y++;
-			}
+			y++;
 		}
-	x = y + 1; /*move to next command*/
-	if (x >= lennx)
-	{
-		x = lennx = 0;
-		ptrstruct->buf_identity = TRUE_CHAIN;
+
+		d = y + 1;
+		if (d >= lennx)
+		{
+			d = lennx = 0;
+			ptrstruct->buf_identity = TRUE_CHAIN;
+		}
+
 		*ptrbuf = q;
 		return (length_string(q));
 	}
-	}
+
 	*ptrbuf = bufferA;
-	return (d);
+	return (x);
 }
